@@ -1,0 +1,32 @@
+<script>
+const nama = "Rachmat Arief Muditanto";
+const jabatan = "Manajer";
+const status = "Menikah";
+
+let gajiPokok = 0;
+
+if (jabatan === "Manajer") {
+  gajiPokok = 10000000;
+} else if (jabatan === "Asisten Manajer") {
+  gajiPokok = 8000000;
+} else if (jabatan === "Staff") {
+  gajiPokok = 5000000;
+}
+
+const tunjanganJabatan = 0.1 * gajiPokok;
+const bpjs = 0.1 * gajiPokok;
+const tunjanganKeluarga = (status === "Menikah") ? (0.1 * gajiPokok) : 0;
+const totalPendapatan = gajiPokok + tunjanganJabatan + tunjanganKeluarga;
+
+document.write("Data Pegawai:");
+document.write("<br>Nama: " + nama);
+document.write("<br>Jabatan: " + jabatan);
+document.write("<br>Status: " + status);
+document.write("<br>");
+document.write("<br>\nPendapatan:");
+document.write("<br>Gaji Pokok: " + gajiPokok);
+document.write("<br>Tunjangan Jabatan: " + tunjanganJabatan);
+document.write("<br>Tunjangan Keluarga: " + tunjanganKeluarga);
+document.write("<br>BPJS: " + bpjs);
+document.write("<br>Total Pendapatan: " + totalPendapatan);
+</script>
