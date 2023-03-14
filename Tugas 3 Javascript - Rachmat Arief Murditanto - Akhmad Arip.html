@@ -1,0 +1,77 @@
+<script>
+    let p1 = {nama:"Arthur", nilai:80};
+    let p2 = {nama:"Ali", nilai:71};
+    let p3 = {nama:"Aldi", nilai:91};
+    let p4 = {nama:"Angelina", nilai:89};
+    let p5 = {nama:"Budi", nilai:50};
+	let p6 = {nama:"Bondan", nilai:61};
+	let p7 = {nama:"David", nilai:57};
+	let p8 = {nama:"Eka", nilai:90};
+	let p9 = {nama:"Rahel", nilai:75};
+	let p10 = {nama:"Siska", nilai:69};
+
+    let person = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10];
+</script>
+<h3>
+    <table style="padding: 10; text-align: center; width: 100%;">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+				<th>Keterangan</th>
+            </tr>
+        </thead>
+    <tbody>
+<script>
+    function setGrade(nilai) {
+        if (nilai >= 90 && nilai <= 100) {
+            return "A";
+        } else if (nilai >= 80 && nilai <= 89) {
+            return "B";
+        } else if (nilai >= 60 && nilai <= 79) {
+            return "C";
+        } else if (nilai >= 30 && nilai <= 59) {
+            return "D";
+        } else {
+            return "E";
+        }
+    }
+
+    function setPredikat(grade) {
+        switch(grade) {
+            case "A":
+                return "Sangat baik";
+                break;
+            case "B":
+                return "Baik";
+                break;
+            case "C":
+                return "Cukup";
+                break;
+            case "D":
+                return "Kurang";
+                break;
+            default:
+                return "Sangat kurang";
+        }
+    }
+
+    let no = 1;
+    for (p of person){
+        let grade = setGrade(p.nilai);
+        let predikat = setPredikat(grade);
+        let ket = (p.nilai >= 60)? "Lulus" : "Gagal";
+        let warna = (p.nilai >= 60)? "#C6EFCE" : "#F8D7DA";
+
+        document.write(`<tr bgcolor="${warna}">
+            <td>${no++}</td>
+            <td>${p.nama}</td>
+            <td>${p.nilai} (${grade})</td>
+            <td>${predikat}</td>
+        </tr>`);
+    }
+</script>
+</tbody>
+   </table>
+</h3>
