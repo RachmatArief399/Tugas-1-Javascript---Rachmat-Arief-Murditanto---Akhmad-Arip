@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator</title>
+</head>
+<body>
+  <style type="text/css" media="all">
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+      text-align: center;
+      background-color: #fffffff;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      border: 10px solid #000000;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 25px;
+      background-color: #808080ff;
+      box-shadow: 10px 10px;
+    }
+    button {
+      height: 50px;
+      width: 90px;
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid #00000;
+      border-radius: 10px;
+      font-size: 30px;
+      color: black;
+      margin: 5px;
+      background-color: #ffffff;
+      box-shadow: 5px 5px;
+      transform: translateY (10px) black;
+      user-select: none;
+      outline: none;
+    }
+    button:active {
+      background-color: grey;
+      box-shadow: 0 5px #666;
+    }
+    header {
+      width: 100px;
+      height: 40px;
+      background-color: #ababab9b;
+      color: rgb(0,0,0);
+      text-align: center;
+      float: right;
+      padding-top: 20px;
+      border: 2px solid rgb(0,0,0);
+      border-style: inset;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 17px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      box-shadow: -2px -2px;
+
+    }
+    #screen {
+      width: 300px;
+      height: 90px;
+      text-align: right;
+      color: black;
+      font-size: 30px;
+      border-radius: 15px;
+      background-color: #ababab9b;
+      border: 5px solid #000000;
+      border-style: double;
+
+    }
+    #buttons {}
+    #btn {}
+    .clear {
+      background-color: red;
+    }
+    .clear:active {
+      background-color: aqua;
+    }
+  </style>
+  <div id="buttons">
+    <header></header>
+    <!-- <header class="myName"></header>-->
+    <br /><br>
+    <input id="screen" type="alphanumeric" value="" max="9" placeholder="000" disabled />
+    <br /><br />
+    <div id="btn">
+      <button class="akar" onclick=insertsym("")>/</button>
+	  <button class="decimal" onclick=insertNum(".")>.</button>
+      <button id="delete" class="clear" onclick=del()>Del</button>
+      <button class="pangkat" onclick=insertsym("^")>^</button>
+	  <br>
+      <button class="seven" onclick=insertNum("7")>7</button>
+	  <button class="eight" onclick=insertNum("8")>8</button>
+	  <button class="nine" onclick=insertNum("9")>9</button>
+      <button class="division" onclick=insertSym("/")>&divide</button>
+	  <br>
+	  <button class="four" onclick=insertNum("4")>4</button>
+      <button class="five" onclick=insertNum("5")>5</button>
+	  <button class="six" onclick=insertNum("6")>6</button>
+      <button class="multiplication" onclick=insertSym("*")>&times;</button>
+	  <br>
+      <button class="one" onclick=insertNum("1")>1</button>
+	  <button class="two" onclick=insertNum("2")>2</button>
+	  <button class="three" onclick=insertNum("3")>3</button>
+      <button class="subtraction" onclick=insertSym("-")>&minus;</button>
+	  <br>
+      <button class="clear" onclick=cls()>Cls</button>
+	  <button class="zero" onclick=insertNum("0")>0</button>
+      <button class="equality" onclick=calc()>=</button>
+	        <button class="addition" onclick=insertSym("+")>&plus;</button>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    function printTime() {
+      var t = document.getElementsByTagName("header")[0];
+      var d = new Date();
+      var h = d.getHours();
+      var m = d.getMinutes();
+      var s = d.getSeconds();
+      if (h < 10) {
+        h = "0" + h
+      }
+      if (m < 10) {
+        m = "0" + m
+      }
+      if (s < 10) {
+        s = "0" + s
+      }
+      t.innerHTML = h + " : " + m + " : " + s;
+    };
+    setInterval(printTime, 1000);
+
+    function insertNum(num) {
+      var screen = document.getElementById("screen");
+      screen.value += num;
+    };
+
+    function insertSym(sym) {
+      var screen = document.getElementById("screen");
+      screen.value += sym;
+    };
+
+    function calc() {
+      var screen = document.getElementById("screen");
+      var result = eval(screen.value);
+      screen.value = result;
+      if (result == undefined) {
+        screen.value = 'Error'
+      }
+    };
+
+    function cls() {
+      var screen = document.getElementById("screen");
+      screen.value = "";
+    }
+
+    function del() {
+      var screen = document.getElementById("screen");
+      var exp = screen.value;
+      var led = exp.substring(0, exp.length-1);
+      screen.value = led;
+    };
+	
+	function pangkat() {
+			let base = parseFloat(document.getElementById('base').value);
+			let exponent = parseFloat(document.getElementById('exponent').value);
+			let result = Math.pow(base, exponent);
+			document.getElementById('result').innerHTML = "Hasil: " + result;
+		}
+
+		function akar() {
+			let radicand = parseFloat(document.getElementById('radicand').value);
+			let degree = parseFloat(document.getElementById('degree').value);
+			let result = Math.pow(radicand, 1 / degree);
+			document.getElementById('result').innerHTML = "Hasil: " + result;
+		}
+	
+  </script>
+</body>
+</html>
